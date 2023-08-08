@@ -1,11 +1,5 @@
 class Crumble::Material::Layout < Template
-  property window_title : String? = nil
-  property page_title : DockingPoint = nil
-  property drawer_items = [] of String | Template
-  property stylesheets = [] of CSS::Stylesheet.class
-  property scripts = [] of JavascriptFile
-  property inline_scripts = [] of String
-  property body_controllers = [] of StimulusController.class
+  property window_title : String?
 
   template do
     doctype html
@@ -25,7 +19,7 @@ class Crumble::Material::Layout < Template
             _script
           end
         end
-        stimulus_include StimulusInclude
+        stimulus_include stimulus_includes if stimulus_includes
       end
       body(MenuController, body_controllers) do
         nav ElementIds::Menu, MenuController.menu_target do
@@ -53,5 +47,33 @@ class Crumble::Material::Layout < Template
     a Classes::MenuSwitch, href("#"), MenuController.switch_action(ClickEvent) do
       "Switch"
     end
+  end
+
+  def page_title
+    nil
+  end
+
+  def stylesheets
+    [] of CSS::Stylesheet.class
+  end
+
+  def scripts
+    [] of JavascriptFile
+  end
+
+  def inline_scripts
+    [] of String
+  end
+
+  def body_controllers
+    [] of StimulusController.class
+  end
+
+  def stimulus_includes
+    nil
+  end
+
+  def drawer_items
+    [] of String
   end
 end
