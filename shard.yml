@@ -1,0 +1,7 @@
+name: crumble-material
+version: 0.1.0
+license: MIT
+
+dependencies:
+  crumble:
+    path: /home/ephraim/repos/crumble
