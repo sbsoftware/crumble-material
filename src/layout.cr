@@ -36,6 +36,11 @@ class Crumble::Material::Layout < Template
           header ElementIds::TopAppBar do
             menu_switch
             page_title
+            if contextual_actions
+              contextual_actions.not_nil!.each do |contextual_action|
+                contextual_action
+              end
+            end
           end
           main_docking_point
         end
@@ -50,6 +55,10 @@ class Crumble::Material::Layout < Template
   end
 
   def page_title
+    nil
+  end
+
+  def contextual_actions
     nil
   end
 

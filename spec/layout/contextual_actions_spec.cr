@@ -1,57 +1,27 @@
 require "../spec_helper"
 
-module Crumble::Material::Layout::DrawerItemsSpec
+module Crumble::Material::Layout::ContextualActionsSpec
   class MyLayout < Crumble::Material::Layout
-    getter my_model : MyModel
-
-    def initialize(@my_model)
-    end
-
-    def drawer_items
-      my_model.menu_items.map do |item|
-        MyDrawerItemView.new(item)
-      end
+    def contextual_actions
+      [MyXAction.new, MyYAction.new]
     end
   end
 
-  class MyDrawerItemView < Template
-    getter name : String
-
-    def initialize(@name)
-    end
-
+  class MyXAction < Template
     template do
-      a(href("https://www.example.com/#{name.downcase}")) { name }
+      div { "X" }
     end
   end
 
-  class MyView < Template
-    getter my_model : MyModel
-
-    def initialize(@my_model)
-    end
-
+  class MyYAction < Template
     template do
-      div { my_model.name }
-    end
-  end
-
-  class MyModel
-    getter name : String
-
-    def initialize(@name)
-    end
-
-    def menu_items
-      ["This", "Is", "Sparta"]
+      div { "Y" }
     end
   end
 
   describe "MyLayout#to_s" do
     it "should return the correct HTML" do
-      model = MyModel.new("Hulk")
-      layout = MyLayout.new(model)
-      layout.main_docking_point = MyView.new(model)
+      layout = MyLayout.new
 
       expected = <<-HTML
       <!doctype html>
@@ -59,17 +29,12 @@ module Crumble::Material::Layout::DrawerItemsSpec
       <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/styles/crumble__material__layout__style_a0060aaed13c4e0c31f0c457d2ce4daf.css"></head>
       <body data-controller="crumble--material--menu"><nav id="crumble--material--element-ids--menu" data-crumble--material--menu-target="menu"><div id="crumble--material--element-ids--drawer-header"><a class="crumble--material--classes--menu-switch" href="#" data-action="click->crumble--material--menu#switch">Switch</a>
       </div>
-      <ul><li><a href="https://www.example.com/this">This</a>
-      </li>
-      <li><a href="https://www.example.com/is">Is</a>
-      </li>
-      <li><a href="https://www.example.com/sparta">Sparta</a>
-      </li>
-      </ul>
+      <ul></ul>
       </nav>
       <div class="crumble--material--classes--content"><header id="crumble--material--element-ids--top-app-bar"><a class="crumble--material--classes--menu-switch" href="#" data-action="click->crumble--material--menu#switch">Switch</a>
+      <div>X</div>
+      <div>Y</div>
       </header>
-      <div>Hulk</div>
       </div>
       </body>
       </html>
