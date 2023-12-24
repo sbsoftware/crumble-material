@@ -1,4 +1,6 @@
 require "crumble"
+require "stimulus"
+require "./menu_controller"
 require "./layout"
 require "./style"
-require "./menu_controller"
+require "crumble-stimulus"

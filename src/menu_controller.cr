@@ -1,7 +1,7 @@
-class Crumble::Material::MenuController < StimulusController
+class Crumble::Material::MenuController < Stimulus::Controller
   targets :menu
 
-  method "switch" do
+  action "switch" do
     this.menuTarget.classList.toggle(Classes::MenuActive)
   end
 end

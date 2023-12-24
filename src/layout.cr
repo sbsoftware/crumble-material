@@ -1,15 +1,15 @@
-class Crumble::Material::Layout < Template
+class Crumble::Material::Layout
   property window_title : String?
 
-  template do
+  ToHtml.instance_template do
     doctype html
     html do
       head do
         title { window_title }
-        meta Charset::UTF8, MetaName::Viewport, {"content", "width=device-width, initial-scale=1.0"}
-        style Style
+        meta charset: "utf-8", name: "viewport", content: "width=device-width, initial-scale=1.0"
+        link Style
         stylesheets.each do |stylesheet|
-          style stylesheet
+          link stylesheet
         end
         scripts.each do |js_file|
           script js_file
@@ -19,12 +19,12 @@ class Crumble::Material::Layout < Template
             _script
           end
         end
-        stimulus_include stimulus_includes if stimulus_includes
+        script Crumble::StimulusControllers
       end
       body(MenuController, body_controllers) do
         nav ElementIds::Menu, MenuController.menu_target do
           div ElementIds::DrawerHeader do
-            menu_switch
+            MenuSwitch
           end
           ul do
             drawer_items.each do |item|
@@ -34,7 +34,7 @@ class Crumble::Material::Layout < Template
         end
         div Classes::Content do
           header ElementIds::TopAppBar do
-            menu_switch
+            MenuSwitch
             page_title
             if contextual_actions
               contextual_actions.not_nil!.each do |contextual_action|
@@ -42,15 +42,17 @@ class Crumble::Material::Layout < Template
               end
             end
           end
-          main_docking_point
+          yield
         end
       end
     end
   end
 
-  template menu_switch do
-    a Classes::MenuSwitch, href("#"), MenuController.switch_action(ClickEvent) do
-      "Switch"
+  class MenuSwitch
+    ToHtml.class_template do
+      a Classes::MenuSwitch, MenuController.switch_action("click"), href: "#" do
+        "Switch"
+      end
     end
   end
 
@@ -75,11 +77,7 @@ class Crumble::Material::Layout < Template
   end
 
   def body_controllers
-    [] of StimulusController.class
-  end
-
-  def stimulus_includes
-    nil
+    [] of ::Stimulus::Controller.class
   end
 
   def drawer_items

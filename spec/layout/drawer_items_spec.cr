@@ -14,24 +14,24 @@ module Crumble::Material::Layout::DrawerItemsSpec
     end
   end
 
-  class MyDrawerItemView < Template
+  class MyDrawerItemView
     getter name : String
 
     def initialize(@name)
     end
 
-    template do
-      a(href("https://www.example.com/#{name.downcase}")) { name }
+    ToHtml.instance_template do
+      a(href: "https://www.example.com/#{name.downcase}") { name }
     end
   end
 
-  class MyView < Template
+  class MyView
     getter my_model : MyModel
 
     def initialize(@my_model)
     end
 
-    template do
+    ToHtml.instance_template do
       div { my_model.name }
     end
   end
@@ -47,36 +47,44 @@ module Crumble::Material::Layout::DrawerItemsSpec
     end
   end
 
-  describe "MyLayout#to_s" do
+  describe "MyLayout#to_html" do
     it "should return the correct HTML" do
       model = MyModel.new("Hulk")
       layout = MyLayout.new(model)
-      layout.main_docking_point = MyView.new(model)
 
-      expected = <<-HTML
-      <!doctype html>
-      <html><head><title></title>
-      <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/styles/crumble__material__layout__style_a0060aaed13c4e0c31f0c457d2ce4daf.css"></head>
-      <body data-controller="crumble--material--menu"><nav id="crumble--material--element-ids--menu" data-crumble--material--menu-target="menu"><div id="crumble--material--element-ids--drawer-header"><a class="crumble--material--classes--menu-switch" href="#" data-action="click->crumble--material--menu#switch">Switch</a>
-      </div>
-      <ul><li><a href="https://www.example.com/this">This</a>
-      </li>
-      <li><a href="https://www.example.com/is">Is</a>
-      </li>
-      <li><a href="https://www.example.com/sparta">Sparta</a>
-      </li>
-      </ul>
-      </nav>
-      <div class="crumble--material--classes--content"><header id="crumble--material--element-ids--top-app-bar"><a class="crumble--material--classes--menu-switch" href="#" data-action="click->crumble--material--menu#switch">Switch</a>
-      </header>
-      <div>Hulk</div>
-      </div>
-      </body>
+      expected = <<-HTML.squish
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title></title>
+          <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="/styles/crumble__material__layout__style_a0060aaed13c4e0c31f0c457d2ce4daf.css">
+          <script type="module" src="/assets/stimulus_controllers_6bd2fd0920cf4bb3b70ea896ede8e25f.js"></script>
+        </head>
+        <body data-controller="crumble--material--menu">
+          <nav id="crumble--material--element-ids--menu" data-crumble--material--menu-target="menu">
+            <div id="crumble--material--element-ids--drawer-header">
+              <a class="crumble--material--classes--menu-switch" data-action="click->crumble--material--menu#switch" href="#">Switch</a>
+            </div>
+            <ul>
+              <li><a href="https://www.example.com/this">This</a></li>
+              <li><a href="https://www.example.com/is">Is</a></li>
+              <li><a href="https://www.example.com/sparta">Sparta</a></li>
+            </ul>
+          </nav>
+          <div class="crumble--material--classes--content">
+            <header id="crumble--material--element-ids--top-app-bar">
+              <a class="crumble--material--classes--menu-switch" data-action="click->crumble--material--menu#switch" href="#">Switch</a>
+            </header>
+            <div>Hulk</div>
+          </div>
+        </body>
       </html>
-
       HTML
 
-      layout.to_s.should eq(expected)
+      layout.to_html do |io, indent_level|
+        MyView.new(model).to_html(io, indent_level)
+      end.should eq(expected)
     end
   end
 end
