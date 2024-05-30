@@ -1,6 +1,4 @@
 class Crumble::Material::Layout
-  property window_title : String?
-
   ToHtml.class_template do
     doctype html
     html do
@@ -56,31 +54,35 @@ class Crumble::Material::Layout
     end
   end
 
-  def page_title
+  def self.window_title
     nil
   end
 
-  def contextual_actions
+  def self.page_title
     nil
   end
 
-  def stylesheets
+  def self.contextual_actions
+    nil
+  end
+
+  def self.stylesheets
     [] of CSS::Stylesheet.class
   end
 
-  def scripts
+  def self.scripts
     [] of JavascriptFile
   end
 
-  def inline_scripts
+  def self.inline_scripts
     [] of String
   end
 
-  def body_controllers
+  def self.body_controllers
     [] of ::Stimulus::Controller.class
   end
 
-  def drawer_items
+  def self.drawer_items
     [] of String
   end
 end
