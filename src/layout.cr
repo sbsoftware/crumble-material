@@ -1,7 +1,7 @@
 class Crumble::Material::Layout
   property window_title : String?
 
-  ToHtml.instance_template do
+  ToHtml.class_template do
     doctype html
     html do
       head do
