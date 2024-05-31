@@ -1,5 +1,5 @@
-class Crumble::Material::Layout
-  ToHtml.instance_template do
+class Crumble::Material::Layout < Crumble::ContextView
+  template do
     doctype html
     html do
       head do

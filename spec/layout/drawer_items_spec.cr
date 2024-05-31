@@ -4,7 +4,7 @@ module Crumble::Material::Layout::DrawerItemsSpec
   class MyLayout < Crumble::Material::Layout
     getter my_model : MyModel
 
-    def initialize(@my_model)
+    def initialize(@ctx, @my_model)
     end
 
     def drawer_items
@@ -50,7 +50,8 @@ module Crumble::Material::Layout::DrawerItemsSpec
   describe "MyLayout#to_html" do
     it "should return the correct HTML" do
       model = MyModel.new("Hulk")
-      layout = MyLayout.new(model)
+      ctx = Crumble::Server::TestRequestContext.new
+      layout = MyLayout.new(ctx, model)
 
       expected = <<-HTML.squish
       <!DOCTYPE html>
@@ -59,7 +60,7 @@ module Crumble::Material::Layout::DrawerItemsSpec
           <title></title>
           <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
           <link rel="stylesheet" href="/styles/crumble__material__layout__style_a0060aaed13c4e0c31f0c457d2ce4daf.css">
-          <script type="module" src="/assets/stimulus_controllers_6bd2fd0920cf4bb3b70ea896ede8e25f.js"></script>
+          <script type="module" src="/assets/stimulus_controllers_a034199809fe026eec996c78f52dadb9.js"></script>
         </head>
         <body data-controller="crumble--material--menu">
           <nav id="crumble--material--element-ids--menu" data-crumble--material--menu-target="menu">
