@@ -9,6 +9,9 @@ class Crumble::Material::Layout < Crumble::ContextView
         stylesheets.each do |stylesheet|
           link stylesheet
         end
+        external_scripts.each do |external_script_url|
+          script src: external_script_url
+        end
         scripts.each do |js_file|
           script js_file
         end
@@ -68,6 +71,10 @@ class Crumble::Material::Layout < Crumble::ContextView
 
   def stylesheets
     [] of CSS::Stylesheet.class
+  end
+
+  def external_scripts
+    [] of String
   end
 
   def scripts
