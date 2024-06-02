@@ -31,7 +31,7 @@ module Crumble::Material::Layout::ContextualActionsSpec
           <title></title>
           <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
           <link rel="stylesheet" href="/styles/crumble__material__layout__style_a0060aaed13c4e0c31f0c457d2ce4daf.css">
-          <script type="module" src="/assets/stimulus_controllers_a034199809fe026eec996c78f52dadb9.js"></script>
+          <script type="module" src="/assets/stimulus_controllers_d3c864485a9fd2e3c6dc33375b54f5d3.js"></script>
         </head>
         <body data-controller="crumble--material--menu">
           <nav id="crumble--material--element-ids--menu" data-crumble--material--menu-target="menu">
