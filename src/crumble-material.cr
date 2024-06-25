@@ -1,4 +1,5 @@
 require "crumble"
+require "./macros"
 require "stimulus"
 require "./menu_controller"
 require "./layout"
