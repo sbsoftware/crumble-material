@@ -1,3 +1,5 @@
+require "./top_app_bar"
+
 class Crumble::Material::Layout < Crumble::ContextView
   template do
     doctype html
@@ -6,6 +8,7 @@ class Crumble::Material::Layout < Crumble::ContextView
         title { window_title }
         meta charset: "utf-8", name: "viewport", content: "width=device-width, initial-scale=1.0"
         link Style
+        link TopAppBar::Style
         stylesheets.each do |stylesheet|
           link stylesheet
         end
@@ -34,15 +37,8 @@ class Crumble::Material::Layout < Crumble::ContextView
           end
         end
         div Classes::Content do
-          header ElementIds::TopAppBar do
-            MenuSwitch
-            page_title
-            if contextual_actions
-              contextual_actions.not_nil!.each do |contextual_action|
-                contextual_action
-              end
-            end
-          end
+          top_app_bar
+
           yield
         end
       end
@@ -57,11 +53,19 @@ class Crumble::Material::Layout < Crumble::ContextView
     end
   end
 
+  def top_app_bar
+    Crumble::Material::TopAppBar.new(
+      leading_icon: MenuSwitch,
+      headline: headline,
+      trailing_icons: contextual_actions || [] of Nil
+    )
+  end
+
   def window_title
     nil
   end
 
-  def page_title
+  def headline
     nil
   end
 

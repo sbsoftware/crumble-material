@@ -59,7 +59,8 @@ module Crumble::Material::Layout::DrawerItemsSpec
         <head>
           <title></title>
           <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-          <link rel="stylesheet" href="/styles/crumble__material__layout__style_a0060aaed13c4e0c31f0c457d2ce4daf.css">
+          <link rel="stylesheet" href="/styles/crumble__material__layout__style_e7551bb0144f625fa816f071dff0c29a.css">
+          <link rel="stylesheet" href="/styles/crumble__material__top_app_bar__style_7653341705e0b7f841cd3853d2c16741.css">
           <script type="module" src="/assets/stimulus_controllers_d3c864485a9fd2e3c6dc33375b54f5d3.js"></script>
         </head>
         <body data-controller="crumble--material--menu">
@@ -74,9 +75,13 @@ module Crumble::Material::Layout::DrawerItemsSpec
             </ul>
           </nav>
           <div class="crumble--material--classes--content">
-            <header id="crumble--material--element-ids--top-app-bar">
-              <a class="crumble--material--classes--menu-switch" data-action="click->crumble--material--menu#switch" href="#">Switch</a>
-            </header>
+            <nav id="crumble--material--top-app-bar--top-app-bar-id">
+              <div class="crumble--material--top-app-bar--leading-icon">
+                <a class="crumble--material--classes--menu-switch" data-action="click->crumble--material--menu#switch" href="#">Switch</a>
+              </div>
+              <h1></h1>
+              <div class="crumble--material--top-app-bar--trailing-icons"></div>
+            </nav>
             <div>Hulk</div>
           </div>
         </body>
