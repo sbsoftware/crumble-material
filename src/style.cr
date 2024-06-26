@@ -7,7 +7,7 @@ class TTFFile < AssetFile
   end
 end
 
-RobotoRegular = TTFFile.register "assets/fonts/Roboto-Regular.ttf", "#{__DIR__}/../assets/fonts/Roboto-Regular.ttf"
+RobotoRegular = TTFFile.register "assets/fonts/Roboto/Roboto-Regular.ttf", "#{__DIR__}/../assets/fonts/Roboto/Roboto-Regular.ttf"
 
 class Crumble::Material::Layout::Style < CSS::Stylesheet
   rules do
