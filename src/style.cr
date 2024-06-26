@@ -1,8 +1,22 @@
 require "./element_ids"
 require "./classes"
 
+class TTFFile < AssetFile
+  def mime_type
+    "font/ttf"
+  end
+end
+
+RobotoRegular = TTFFile.register "assets/fonts/Roboto-Regular.ttf", "#{__DIR__}/../assets/fonts/Roboto-Regular.ttf"
+
 class Crumble::Material::Layout::Style < CSS::Stylesheet
   rules do
+    font_face do
+      fontFamily "Roboto"
+      fontStyle Normal
+      src url(RobotoRegular.uri_path)
+    end
+
     rule html, body, Classes::Content do
       width 100.percent
     end
@@ -11,7 +25,7 @@ class Crumble::Material::Layout::Style < CSS::Stylesheet
       minHeight 100.vh
       padding 0
       margin 0
-      fontFamily "Helvetica, sans-serif"
+      fontFamily "Roboto, sans-serif"
     end
 
     rule body do

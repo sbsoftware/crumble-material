@@ -46,6 +46,8 @@ class Crumble::Material::TopAppBar(L, H, T)
       margin 0
       padding 0
       flexGrow 2
+      fontSize "22pt"
+      prop("font-weight", "400")
     end
   end
 end
