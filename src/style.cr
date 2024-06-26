@@ -3,7 +3,7 @@ require "./classes"
 
 class Crumble::Material::Layout::Style < CSS::Stylesheet
   rules do
-    rule html, body do
+    rule html, body, Classes::Content do
       width 100.percent
     end
 
