@@ -1,3 +1,4 @@
+require "./navigation_drawer"
 require "./top_app_bar"
 
 class Crumble::Material::Layout < Crumble::ContextView
@@ -8,6 +9,7 @@ class Crumble::Material::Layout < Crumble::ContextView
         title { window_title }
         meta charset: "utf-8", name: "viewport", content: "width=device-width, initial-scale=1.0"
         link Style
+        link NavigationDrawer::Style
         link TopAppBar::Style
         stylesheets.each do |stylesheet|
           link stylesheet
@@ -26,16 +28,7 @@ class Crumble::Material::Layout < Crumble::ContextView
         script Crumble::StimulusControllers
       end
       body(MenuController, body_controllers) do
-        nav ElementIds::Menu, MenuController.menu_target do
-          div ElementIds::DrawerHeader do
-            MenuSwitch
-          end
-          ul do
-            drawer_items.each do |item|
-              li { item }
-            end
-          end
-        end
+        navigation_drawer
         div Classes::Content do
           top_app_bar
 
@@ -45,17 +38,16 @@ class Crumble::Material::Layout < Crumble::ContextView
     end
   end
 
-  class MenuSwitch
-    ToHtml.class_template do
-      a Classes::MenuSwitch, MenuController.switch_action("click"), href: "#" do
-        "Switch"
-      end
-    end
+  def navigation_drawer
+    Crumble::Material::NavigationDrawer.new(
+      headline: drawer_headline,
+      items: drawer_items
+    )
   end
 
   def top_app_bar
     Crumble::Material::TopAppBar.new(
-      leading_icon: MenuSwitch,
+      leading_icon: Crumble::Material::NavigationDrawer::MenuSwitch,
       headline: headline,
       trailing_icons: contextual_actions || [] of Nil
     )
@@ -71,6 +63,14 @@ class Crumble::Material::Layout < Crumble::ContextView
 
   def contextual_actions
     nil
+  end
+
+  def drawer_headline
+    nil
+  end
+
+  def drawer_items
+    [] of String
   end
 
   def stylesheets
@@ -91,9 +91,5 @@ class Crumble::Material::Layout < Crumble::ContextView
 
   def body_controllers
     [] of ::Stimulus::Controller.class
-  end
-
-  def drawer_items
-    [] of String
   end
 end
