@@ -8,6 +8,7 @@ class TTFFile < AssetFile
 end
 
 RobotoRegular = TTFFile.register "assets/fonts/Roboto/Roboto-Regular.ttf", "#{__DIR__}/../assets/fonts/Roboto/Roboto-Regular.ttf"
+MaterialIconFont = TTFFile.register "assets/MaterialSymbolsOutlined.ttf", "#{__DIR__}/../assets/fonts/MaterialSymbolsOutlined/MaterialSymbolsOutlined.ttf"
 
 class Crumble::Material::Layout::Style < CSS::Stylesheet
   rules do
@@ -15,6 +16,26 @@ class Crumble::Material::Layout::Style < CSS::Stylesheet
       fontFamily "Roboto"
       fontStyle Normal
       src url(RobotoRegular.uri_path)
+    end
+
+    font_face do
+      fontFamily "Material Symbols Outlined"
+      fontStyle Normal
+      src url(MaterialIconFont.uri_path)
+    end
+
+    rule Classes::MaterialIcon do
+      fontFamily "Material Symbols Outlined"
+      fontWeight Normal
+      fontStyle Normal
+      fontSize 24.px
+      display InlineBlock
+      # lineHeight 1
+      # textTransform None
+      # letterSpacing Normal
+      # wordWrap Normal
+      # whiteSpace NoWrap
+      # direction LTR
     end
 
     rule html, body, Classes::Content do
