@@ -49,7 +49,8 @@ class Crumble::Material::Layout < Crumble::ContextView
     Crumble::Material::TopAppBar.new(
       leading_icon: Crumble::Material::NavigationDrawer::MenuSwitch,
       headline: headline,
-      trailing_icons: contextual_actions || [] of Nil
+      trailing_icons: contextual_actions || [] of Nil,
+      type: top_app_bar_type
     )
   end
 
@@ -63,6 +64,10 @@ class Crumble::Material::Layout < Crumble::ContextView
 
   def contextual_actions
     nil
+  end
+
+  def top_app_bar_type
+    TopAppBar::Type::CenterAligned
   end
 
   def drawer_headline

@@ -1,16 +1,24 @@
 class Crumble::Material::TopAppBar(L, H, T)
+  enum Type
+    CenterAligned
+    Small
+  end
+
   getter leading_icon : L?
   getter headline : H?
   getter trailing_icons : Array(T) | Array(Nil)
+  getter type : Type
 
-  def initialize(@leading_icon, @headline, @trailing_icons); end
+  def initialize(@leading_icon, @headline, @trailing_icons, @type = :small); end
 
   element_id TopAppBarId
   css_class LeadingIcon
   css_class TrailingIcons
+  css_class CenterAlignedType
+  css_class SmallType
 
   ToHtml.instance_template do
-    nav TopAppBarId do
+    nav TopAppBarId, type_class do
       div LeadingIcon do
         leading_icon
       end
@@ -37,6 +45,10 @@ class Crumble::Material::TopAppBar(L, H, T)
       prop("column-gap", 24.px)
     end
 
+    rule SmallType >> h1 do
+      flexGrow 2
+    end
+
     rule LeadingIcon do
       width 24.px
       height 24.px
@@ -45,9 +57,19 @@ class Crumble::Material::TopAppBar(L, H, T)
     rule h1 do
       margin 0
       padding 0
-      flexGrow 2
       fontSize "22pt"
       prop("font-weight", "400")
+    end
+
+    rule TrailingIcons do
+      minWidth 24.px
+    end
+  end
+
+  def type_class
+    case type
+    in Type::CenterAligned then CenterAlignedType
+    in Type::Small then SmallType
     end
   end
 end
