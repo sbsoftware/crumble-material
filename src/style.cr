@@ -30,7 +30,7 @@ class Crumble::Material::Layout::Style < CSS::Stylesheet
       fontStyle Normal
       fontSize 24.px
       display InlineBlock
-      # lineHeight 1
+      prop("line-height", "1")
       # textTransform None
       # letterSpacing Normal
       # wordWrap Normal

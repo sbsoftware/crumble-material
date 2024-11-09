@@ -59,7 +59,7 @@ module Crumble::Material::Layout::DrawerItemsSpec
         <head>
           <title></title>
           <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-          <link rel="stylesheet" href="/styles/crumble__material__layout__style_849d172e17355603a0b8ec3bfd973fd0.css">
+          <link rel="stylesheet" href="/styles/crumble__material__layout__style_bf76d411cbc83f5548e61e619e32dce0.css">
           <link rel="stylesheet" href="/styles/crumble__material__navigation_drawer__style_0f7e9c5372499b61335448ccaa0d639d.css">
           <link rel="stylesheet" href="/styles/crumble__material__top_app_bar__style_748e0d97478b4fd3a68ef2ffc9187ddc.css">
           <script type="module" src="/assets/stimulus_controllers_4ca7ddc4ead535d3f689dc3ca433817f.js"></script>
