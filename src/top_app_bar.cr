@@ -54,11 +54,14 @@ class Crumble::Material::TopAppBar(L, H, T)
       height 24.px
     end
 
-    rule h1 do
+    rule TopAppBarId >> h1 do
       margin 0
       padding 0
       fontSize "22pt"
       prop("font-weight", "400")
+      prop("text-overflow", "ellipsis")
+      prop("overflow", "hidden")
+      prop("white-space", "nowrap")
     end
 
     rule TrailingIcons do
