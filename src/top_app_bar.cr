@@ -14,6 +14,7 @@ class Crumble::Material::TopAppBar(L, H, T)
   element_id TopAppBarId
   css_class LeadingIcon
   css_class TrailingIcons
+  css_class TrailingIcon
   css_class CenterAlignedType
   css_class SmallType
 
@@ -27,7 +28,9 @@ class Crumble::Material::TopAppBar(L, H, T)
       end
       div TrailingIcons do
         trailing_icons.each do |trailing_icon|
-          trailing_icon
+          div TrailingIcon do
+            trailing_icon
+          end
         end
       end
     end
@@ -66,6 +69,14 @@ class Crumble::Material::TopAppBar(L, H, T)
 
     rule TrailingIcons do
       minWidth 24.px
+      prop("white-space", "nowrap")
+    end
+
+    rule TrailingIcon do
+      display InlineBlock
+      width 24.px
+      height 24.px
+      prop("margin-left", 4.px)
     end
   end
 
