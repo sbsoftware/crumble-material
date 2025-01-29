@@ -32,8 +32,8 @@ module Crumble::Material::Layout::ContextualActionsSpec
           <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
           <link rel="stylesheet" href="/styles/crumble__material__layout__style_bf76d411cbc83f5548e61e619e32dce0.css">
           <link rel="stylesheet" href="/styles/crumble__material__navigation_drawer__style_0f7e9c5372499b61335448ccaa0d639d.css">
-          <link rel="stylesheet" href="/styles/crumble__material__top_app_bar__style_748e0d97478b4fd3a68ef2ffc9187ddc.css">
-          <script type="module" src="/assets/stimulus_controllers_4ca7ddc4ead535d3f689dc3ca433817f.js"></script>
+          <link rel="stylesheet" href="/styles/crumble__material__top_app_bar__style_c1b72eb45f3fcc455f1c97cf085b758a.css">
+          <script type="module" src="/assets/stimulus_controllers_06d422439a693ffee6c5d436a876c077.js"></script>
         </head>
         <body data-controller="crumble--material--menu">
           <nav id="crumble--material--navigation-drawer--id" data-crumble--material--menu-target="menu">
@@ -47,8 +47,12 @@ module Crumble::Material::Layout::ContextualActionsSpec
               </div>
               <h1></h1>
               <div class="crumble--material--top-app-bar--trailing-icons">
-                <div>X</div>
-                <div>Y</div>
+                <div class="crumble--material--top-app-bar--trailing-icon">
+                  <div>X</div>
+                </div>
+                <div class="crumble--material--top-app-bar--trailing-icon">
+                  <div>Y</div>
+                </div>
               </div>
             </nav>
           </div>
