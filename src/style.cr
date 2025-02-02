@@ -10,7 +10,7 @@ end
 RobotoRegular = TTFFile.register "assets/fonts/Roboto/Roboto-Regular.ttf", "#{__DIR__}/../assets/fonts/Roboto/Roboto-Regular.ttf"
 MaterialIconFont = TTFFile.register "assets/MaterialSymbolsOutlined.ttf", "#{__DIR__}/../assets/fonts/MaterialSymbolsOutlined/MaterialSymbolsOutlined.ttf"
 
-class Crumble::Material::Layout::Style < CSS::Stylesheet
+class Crumble::Material::Style < CSS::Stylesheet
   rules do
     font_face do
       fontFamily "Roboto"

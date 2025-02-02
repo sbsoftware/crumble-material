@@ -1,39 +1,24 @@
+require "./style"
 require "./navigation_drawer"
 require "./top_app_bar"
+require "./menu_controller"
 
-class Crumble::Material::Layout < Crumble::ContextView
+class Crumble::Material::Layout < ToHtml::Layout
+  include Crumble::ContextView
+
+  add_to_head Crumble::Material::Style
+  add_to_head Crumble::Material::NavigationDrawer::Style
+  add_to_head Crumble::Material::TopAppBar::Style
+
+  body_attributes Crumble::Material::MenuController
+
   template do
-    doctype html
-    html do
-      head do
-        title { window_title }
-        meta charset: "utf-8", name: "viewport", content: "width=device-width, initial-scale=1.0"
-        link Style
-        link NavigationDrawer::Style
-        link TopAppBar::Style
-        stylesheets.each do |stylesheet|
-          link stylesheet
-        end
-        external_scripts.each do |external_script_url|
-          script src: external_script_url
-        end
-        scripts.each do |js_file|
-          script js_file
-        end
-        inline_scripts.each do |_script|
-          script do
-            _script
-          end
-        end
-        script Crumble::StimulusControllers
-      end
-      body(MenuController, body_controllers) do
-        navigation_drawer
-        div Classes::Content do
-          top_app_bar
+    super do
+      navigation_drawer
+      div Classes::Content do
+        top_app_bar
 
-          yield
-        end
+        yield
       end
     end
   end
