@@ -63,6 +63,9 @@ module Crumble::Material::Layout::DrawerItemsSpec
           <link rel="stylesheet" href="/styles/crumble__material__style_bf76d411cbc83f5548e61e619e32dce0.css">
           <link rel="stylesheet" href="/styles/crumble__material__navigation_drawer__style_0f7e9c5372499b61335448ccaa0d639d.css">
           <link rel="stylesheet" href="/styles/crumble__material__top_app_bar__style_c1b72eb45f3fcc455f1c97cf085b758a.css">
+          <link rel="stylesheet" href="/styles/crumble__material__card__style_2d37f487832f6d1c71d132a44fd141ef.css">
+          <link rel="stylesheet" href="/styles/crumble__material__card__title__style_7b8235f5cf026a2cf8d44e214bd75988.css">
+          <link rel="stylesheet" href="/styles/crumble__material__card__secondary_text__style_d803fa0a99bc7bbff49f299919ad1ac2.css">
         </head>
         <body data-controller="crumble--material--menu">
           <nav id="crumble--material--navigation-drawer--id" data-crumble--material--menu-target="menu">

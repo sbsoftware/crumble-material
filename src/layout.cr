@@ -1,6 +1,9 @@
 require "./style"
 require "./navigation_drawer"
 require "./top_app_bar"
+require "./card"
+require "./card_title"
+require "./card_secondary_text"
 require "./menu_controller"
 
 class Crumble::Material::Layout < ToHtml::Layout
@@ -9,6 +12,7 @@ class Crumble::Material::Layout < ToHtml::Layout
   add_to_head Crumble::Material::Style
   add_to_head Crumble::Material::NavigationDrawer::Style
   add_to_head Crumble::Material::TopAppBar::Style
+  add_to_head Crumble::Material::Card::Style, Crumble::Material::Card::Title::Style, Card::SecondaryText::Style
 
   body_attributes Crumble::Material::MenuController
 
