@@ -70,6 +70,7 @@ class Crumble::Material::TopAppBar(L, H, T)
     rule TrailingIcons do
       minWidth 24.px
       prop("white-space", "nowrap")
+      prop("flex-shrink", 0)
     end
 
     rule TrailingIcon do
