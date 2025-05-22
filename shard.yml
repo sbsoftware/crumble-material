@@ -10,7 +10,7 @@ dependencies:
     github: sbsoftware/stimulus.cr
   crumble:
     github: sbsoftware/crumble
-    version: ">= 0.19.0"
+    version: ">= 0.21.2"
   crumble-stimulus:
     github: sbsoftware/crumble-stimulus
     version: ">= 0.3.0"
