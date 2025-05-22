@@ -67,7 +67,7 @@ module Crumble::Material::Layout::DrawerItemsSpec
           <link rel="stylesheet" href="/styles/crumble__material__card__style_2d37f487832f6d1c71d132a44fd141ef.css">
           <link rel="stylesheet" href="/styles/crumble__material__card__title__style_7b8235f5cf026a2cf8d44e214bd75988.css">
           <link rel="stylesheet" href="/styles/crumble__material__card__secondary_text__style_d803fa0a99bc7bbff49f299919ad1ac2.css">
-          <link rel="stylesheet" href="/styles/crumble__material__icon__style_30d14c5ba82dad0fc4833259fd08b711.css">
+          <link rel="stylesheet" href="/styles/crumble__material__icon__style_218ac3029c97f01f65fac7119003b9b9.css">
         </head>
         <body data-controller="crumble--material--menu">
           <nav id="crumble--material--navigation-drawer--id" data-crumble--material--menu-target="menu">
@@ -82,7 +82,9 @@ module Crumble::Material::Layout::DrawerItemsSpec
             <nav id="crumble--material--top-app-bar--top-app-bar-id" class="crumble--material--top-app-bar--center-aligned-type">
               <div class="crumble--material--top-app-bar--leading-icon">
                 <span data-action="click->crumble--material--menu#switch">
-                  <span class="crumble--material--icon--icon-class">Menu</span>
+                  <div class="crumble--material--icon--wrapper">
+                    <span class="crumble--material--icon--icon-class">Menu</span>
+                  </div>
                 </span>
               </div>
               <h1></h1>

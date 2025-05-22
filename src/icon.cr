@@ -4,14 +4,24 @@ module Crumble
       Font = TTFFile.register "assets/MaterialSymbolsOutlined.ttf", "#{__DIR__}/../assets/fonts/MaterialSymbolsOutlined/MaterialSymbolsOutlined.ttf"
 
       getter name : String
+      getter caption_text : String?
 
-      def initialize(@name); end
+      def initialize(@name, @caption_text = nil); end
 
+      css_class Wrapper
       css_class IconClass
+      css_class Caption
 
       ToHtml.instance_template do
-        span IconClass do
-          name
+        div Wrapper do
+          span IconClass do
+            name
+          end
+          if caption_text
+            span Caption do
+              caption_text
+            end
+          end
         end
       end
 
@@ -20,6 +30,12 @@ module Crumble
           fontFamily "Material Symbols Outlined"
           fontStyle Normal
           src url(Font.uri_path)
+        end
+
+        rule Wrapper do
+          prop("display", "inline-flex")
+          alignItems Center
+          prop("vertical-align", "text-bottom")
         end
 
         rule IconClass do
@@ -36,6 +52,10 @@ module Crumble
           # wordWrap Normal
           # whiteSpace NoWrap
           # direction LTR
+        end
+
+        rule Caption do
+          marginLeft 2.px
         end
       end
     end
