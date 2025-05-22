@@ -4,7 +4,4 @@ module Crumble::Material::Classes
 
   class MenuActive < CSS::CSSClass
   end
-
-  class MaterialIcon < CSS::CSSClass
-  end
 end

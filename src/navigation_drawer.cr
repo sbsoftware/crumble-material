@@ -54,8 +54,8 @@ class Crumble::Material::NavigationDrawer(H, I)
 
   class MenuSwitch
     ToHtml.class_template do
-      span Classes::MaterialIcon, MenuController.switch_action("click") do
-        "Menu"
+      span MenuController.switch_action("click") do
+        Crumble::Material::Icon.new("Menu")
       end
     end
   end
