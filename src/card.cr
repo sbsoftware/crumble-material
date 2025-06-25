@@ -12,9 +12,10 @@ class Crumble::Material::Card
       padding 16.px
       prop("box-shadow", "1px 1px 3px #000")
       width 376.px
-      height 100.px
       maxWidth "calc(100vw - 32px)"
+      minHeight 100.px
       prop("box-sizing", "border-box")
+      marginBottom 16.px
     end
 
     rule Link do
