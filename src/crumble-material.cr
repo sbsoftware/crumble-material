@@ -1,5 +1,4 @@
 require "crumble"
-require "./macros"
 require "stimulus"
 require "crumble-stimulus"
 require "./ext/**"

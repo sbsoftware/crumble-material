@@ -10,8 +10,8 @@ class Crumble::Material::Card::Title(T)
   style do
     rule CardTitle do
       margin 0
-      fontSize 24.px
-      prop("line-height", 24.px)
+      font_size 24.px
+      line_height 24.px
     end
   end
 

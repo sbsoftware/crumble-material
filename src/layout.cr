@@ -9,12 +9,6 @@ require "./menu_controller"
 class Crumble::Material::Layout < ToHtml::Layout
   include Crumble::ContextView
 
-  append_to_head Crumble::Material::Style
-  append_to_head Crumble::Material::NavigationDrawer::Style
-  append_to_head Crumble::Material::TopAppBar::Style
-  append_to_head Crumble::Material::Card::Style, Crumble::Material::Card::Title::Style, Crumble::Material::Card::SecondaryText::Style
-  append_to_head Crumble::Material::Icon::Style
-
   body_attributes Crumble::Material::MenuController
 
   template do

@@ -8,24 +8,24 @@ class Crumble::Material::Card
 
   style do
     rule Card do
-      position Relative
+      position :relative
       padding 16.px
-      prop("box-shadow", "1px 1px 3px #000")
+      box_shadow 1.px, 1.px, 3.px, "#000"
       width 376.px
-      maxWidth "calc(100vw - 32px)"
-      minHeight 100.px
-      prop("box-sizing", "border-box")
-      marginBottom 16.px
+      property("max-width", "calc(100vw - 32px)")
+      min_height 100.px
+      box_sizing :border_box
+      margin_bottom 16.px
     end
 
     rule Link do
-      position Absolute
+      position :absolute
       top 0.px
       left 0.px
       width 100.percent
       height 100.percent
-      textDecoration None
-      zIndex 1
+      text_decoration :none
+      z_index 1
     end
   end
 

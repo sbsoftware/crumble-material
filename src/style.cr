@@ -7,13 +7,11 @@ class TTFFile < AssetFile
   end
 end
 
-RobotoRegular = TTFFile.register "assets/fonts/Roboto/Roboto-Regular.ttf", "#{__DIR__}/../assets/fonts/Roboto/Roboto-Regular.ttf"
+module Crumble::Material
+  RobotoRegular = TTFFile.register "assets/fonts/Roboto/Roboto-Regular.ttf", "#{__DIR__}/../assets/fonts/Roboto/Roboto-Regular.ttf"
 
-class Crumble::Material::Style < CSS::Stylesheet
-  rules do
-    font_face do
-      fontFamily "Roboto"
-      fontStyle Normal
+  style do
+    font_face RobotoFont, name: "Roboto" do
       src url(RobotoRegular.uri_path)
     end
 
@@ -22,41 +20,41 @@ class Crumble::Material::Style < CSS::Stylesheet
     end
 
     rule html, body, Classes::Content do
-      minHeight 100.vh
+      min_height 100.vh
       padding 0
       margin 0
     end
 
     rule body do
-      display Flex
-      alignItems Stretch
+      display :flex
+      align_items :stretch
     end
 
     rule body, button, input do
-      fontFamily "Roboto, sans-serif"
+      font_family RobotoFont, :sans_serif
     end
 
     rule a do
-      color Black
-      textDecoration None
+      color :black
+      text_decoration :none
     end
 
     rule "[data-action]:not(input)" do
-      prop("cursor", "pointer")
+      cursor :pointer
     end
 
     rule "input[type=\"text\"]", "input[type=\"number\"]" do
-      prop("border", "none")
-      prop("border-bottom", "1px solid black")
-      backgroundColor "#EEE"
+      border :none
+      border_bottom 1.px, :solid, :black
+      background_color "#EEE"
       padding 8.px
-      prop("box-sizing", "border-box")
+      box_sizing :border_box
     end
 
     rule button do
-      prop("border", "none")
-      prop("outset", "none")
-      backgroundColor "transparent"
+      border :none
+      outline :none
+      background_color :transparent
     end
   end
 end

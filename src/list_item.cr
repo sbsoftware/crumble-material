@@ -12,11 +12,11 @@ module Crumble
       style do
         rule Item do
           width 100.percent
-          fontSize 1.25.em
-          prop("line-height", 40.px)
+          font_size 1.25.em
+          line_height 40.px
           padding 8.px, 16.px
-          border 1.px, Solid, "#BBBBBB"
-          prop("box-sizing", "border-box")
+          border 1.px, :solid, "#BBBBBB"
+          box_sizing :border_box
         end
       end
     end

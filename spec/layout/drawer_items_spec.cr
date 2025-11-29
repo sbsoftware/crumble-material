@@ -50,8 +50,18 @@ module Crumble::Material::Layout::DrawerItemsSpec
   describe "MyLayout#to_html" do
     it "should return the correct HTML" do
       model = MyModel.new("Hulk")
-      ctx = Crumble::Server::TestRequestContext.new
+      ctx = test_handler_context
       layout = MyLayout.new(ctx, model)
+
+      stimulus_uri = Crumble::StimulusControllers.uri_path
+      icon_style = Crumble::Material::Icon::Style.uri_path
+      list_item_style = Crumble::Material::ListItem::Style.uri_path
+      base_style = Crumble::Material::Style.uri_path
+      navigation_drawer_style = Crumble::Material::NavigationDrawer::Style.uri_path
+      top_app_bar_style = Crumble::Material::TopAppBar::Style.uri_path
+      card_style = Crumble::Material::Card::Style.uri_path
+      card_title_style = Crumble::Material::Card::Title::Style.uri_path
+      card_secondary_style = Crumble::Material::Card::SecondaryText::Style.uri_path
 
       expected = <<-HTML.squish
       <!DOCTYPE html>
@@ -60,14 +70,15 @@ module Crumble::Material::Layout::DrawerItemsSpec
           <title></title>
           <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
           <script>var pageload_time;var evt_source;pageload_time = Date.now();evt_source = new EventSource("/live_reload");evt_source.addEventListener("message", function(msg) {var compile_time;compile_time = Date.parse(msg.data);if (pageload_time < compile_time) {window.location.reload();}});</script>
-          <script type="module" src="/assets/stimulus_controllers_4ca7ddc4ead535d3f689dc3ca433817f.js"></script>
-          <link rel="stylesheet" href="/styles/crumble__material__style_e7551bb0144f625fa816f071dff0c29a.css">
-          <link rel="stylesheet" href="/styles/crumble__material__navigation_drawer__style_0f7e9c5372499b61335448ccaa0d639d.css">
-          <link rel="stylesheet" href="/styles/crumble__material__top_app_bar__style_4a6b50c08af83370811367077c4e4f59.css">
-          <link rel="stylesheet" href="/styles/crumble__material__card__style_2d37f487832f6d1c71d132a44fd141ef.css">
-          <link rel="stylesheet" href="/styles/crumble__material__card__title__style_7b8235f5cf026a2cf8d44e214bd75988.css">
-          <link rel="stylesheet" href="/styles/crumble__material__card__secondary_text__style_d803fa0a99bc7bbff49f299919ad1ac2.css">
-          <link rel="stylesheet" href="/styles/crumble__material__icon__style_218ac3029c97f01f65fac7119003b9b9.css">
+          <script type="module" src="#{stimulus_uri}"></script>
+          <link rel="stylesheet" href="#{icon_style}">
+          <link rel="stylesheet" href="#{list_item_style}">
+          <link rel="stylesheet" href="#{base_style}">
+          <link rel="stylesheet" href="#{navigation_drawer_style}">
+          <link rel="stylesheet" href="#{top_app_bar_style}">
+          <link rel="stylesheet" href="#{card_style}">
+          <link rel="stylesheet" href="#{card_title_style}">
+          <link rel="stylesheet" href="#{card_secondary_style}">
         </head>
         <body data-controller="crumble--material--menu">
           <nav id="crumble--material--navigation-drawer--id" data-crumble--material--menu-target="menu">

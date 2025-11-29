@@ -11,7 +11,7 @@ class Crumble::Material::TopAppBar(L, H, T)
 
   def initialize(@leading_icon, @headline, @trailing_icons, @type = :small); end
 
-  element_id TopAppBarId
+  css_id TopAppBarId
   css_class LeadingIcon
   css_class TrailingIcons
   css_class TrailingIcon
@@ -40,16 +40,16 @@ class Crumble::Material::TopAppBar(L, H, T)
     rule TopAppBarId do
       width 100.percent
       height 64.px
-      display Flex
-      justifyContent SpaceBetween
-      alignItems Center
+      display :flex
+      justify_content :space_between
+      align_items :center
       padding 0, 16.px
-      prop("box-sizing", "border-box")
-      prop("column-gap", 24.px)
+      box_sizing :border_box
+      column_gap 24.px
     end
 
-    rule SmallType >> h1 do
-      flexGrow 2
+    rule SmallType > h1 do
+      flex_grow 2
     end
 
     rule LeadingIcon do
@@ -57,27 +57,27 @@ class Crumble::Material::TopAppBar(L, H, T)
       height 24.px
     end
 
-    rule TopAppBarId >> h1 do
+    rule TopAppBarId > h1 do
       margin 0
       padding 0
-      fontSize "22pt"
-      prop("font-weight", "400")
-      prop("text-overflow", "ellipsis")
-      prop("overflow", "hidden")
-      prop("white-space", "nowrap")
+      font_size 22.pt
+      font_weight 400
+      text_overflow :ellipsis
+      overflow :hidden
+      white_space :nowrap
     end
 
     rule TrailingIcons do
-      minWidth 24.px
-      prop("white-space", "nowrap")
-      prop("flex-shrink", 0)
+      min_width 24.px
+      white_space :nowrap
+      flex_shrink 0
     end
 
     rule TrailingIcon do
-      display InlineBlock
+      display :inline_block
       width 24.px
       height 24.px
-      prop("margin-left", 4.px)
+      margin_left 4.px
     end
   end
 

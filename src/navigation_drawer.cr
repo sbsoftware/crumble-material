@@ -4,7 +4,7 @@ class Crumble::Material::NavigationDrawer(H, I)
 
   def initialize(@headline, @items); end
 
-  element_id Id
+  css_id Id
   css_class Items
 
   ToHtml.instance_template do
@@ -24,31 +24,31 @@ class Crumble::Material::NavigationDrawer(H, I)
 
   style do
     rule Id do
-      display None
+      display :none
       width 360.px
-      paddingTop 16.px
+      padding_top 16.px
     end
 
-    rule Id & Classes::MenuActive do
-      display Block
+    rule Id && Classes::MenuActive do
+      display :block
     end
 
-    rule Id >> a do
-      textDecoration None
-      color Black
+    rule Id > a do
+      text_decoration :none
+      color :black
     end
 
     rule Items do
-      listStyle None
+      list_style :none
       margin 0
       padding 0
     end
 
-    rule(Id >> h1, Items > any) do
+    rule(Id > h1, Items > any) do
       height 56.px
-      prop("margin", "0 28px")
-      prop("font-size", "14pt")
-      prop("font-weight", "500")
+      margin 0, 28.px
+      font_size 14.pt
+      font_weight 500
     end
   end
 
