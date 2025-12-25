@@ -9,6 +9,7 @@ end
 
 module Crumble::Material
   RobotoRegular = TTFFile.register "assets/fonts/Roboto/Roboto-Regular.ttf", "#{__DIR__}/../assets/fonts/Roboto/Roboto-Regular.ttf"
+  RobotoLicense = TextFile.register "assets/fonts/Roboto/LICENSE.txt", "#{__DIR__}/../assets/fonts/Roboto/LICENSE.txt"
 
   style do
     font_face RobotoFont, name: "Roboto" do

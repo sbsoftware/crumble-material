@@ -1,6 +1,7 @@
 require "crumble"
 require "stimulus"
 require "crumble-stimulus"
+require "./asset_files"
 require "./ext/**"
 require "./menu_controller"
 require "./icon"

@@ -84,7 +84,7 @@ class Crumble::Material::TopAppBar(L, H, T)
   def type_class
     case type
     in Type::CenterAligned then CenterAlignedType
-    in Type::Small then SmallType
+    in Type::Small         then SmallType
     end
   end
 end
