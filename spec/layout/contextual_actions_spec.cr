@@ -2,9 +2,6 @@ require "../spec_helper"
 
 module Crumble::Material::Layout::ContextualActionsSpec
   class MyLayout < Crumble::Material::Layout
-    def contextual_actions
-      [MyXAction.new, MyYAction.new]
-    end
   end
 
   class MyXAction
@@ -23,6 +20,7 @@ module Crumble::Material::Layout::ContextualActionsSpec
     it "should return the correct HTML" do
       ctx = test_handler_context
       layout = MyLayout.new(ctx: ctx)
+      contextual_actions = [MyXAction.new, MyYAction.new]
 
       stimulus_uri = Crumble::StimulusControllers.uri_path
       icon_style = Crumble::Material::Icon::Style.uri_path
@@ -80,8 +78,13 @@ module Crumble::Material::Layout::ContextualActionsSpec
       </html>
       HTML
 
-      layout.to_html do
-        nil
+      layout.to_html do |io, indent_level|
+        Crumble::Material::TopAppBar.new(
+          leading_icon: Crumble::Material::NavigationDrawer::MenuSwitch,
+          headline: nil,
+          trailing_icons: contextual_actions,
+          type: Crumble::Material::TopAppBar::Type::CenterAligned
+        ).to_html(io, indent_level)
       end.should eq(expected)
     end
   end

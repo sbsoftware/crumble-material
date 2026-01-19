@@ -90,17 +90,6 @@ module Crumble::Material::Layout::DrawerItemsSpec
             </ul>
           </nav>
           <div class="crumble--material--classes--content">
-            <nav id="crumble--material--top-app-bar--top-app-bar-id" class="crumble--material--top-app-bar--center-aligned-type">
-              <div class="crumble--material--top-app-bar--leading-icon">
-                <span data-action="click->crumble--material--menu#switch">
-                  <div class="crumble--material--icon--wrapper">
-                    <span class="crumble--material--icon--icon-class">Menu</span>
-                  </div>
-                </span>
-              </div>
-              <h1></h1>
-              <div class="crumble--material--top-app-bar--trailing-icons"></div>
-            </nav>
             <div>Hulk</div>
           </div>
         </body>

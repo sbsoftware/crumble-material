@@ -15,8 +15,6 @@ class Crumble::Material::Layout < ToHtml::Layout
     super do
       navigation_drawer
       div Classes::Content do
-        top_app_bar
-
         yield
       end
     end
@@ -29,29 +27,8 @@ class Crumble::Material::Layout < ToHtml::Layout
     )
   end
 
-  def top_app_bar
-    Crumble::Material::TopAppBar.new(
-      leading_icon: Crumble::Material::NavigationDrawer::MenuSwitch,
-      headline: headline,
-      trailing_icons: contextual_actions || [] of Nil,
-      type: top_app_bar_type
-    )
-  end
-
   def window_title
     nil
-  end
-
-  def headline
-    nil
-  end
-
-  def contextual_actions
-    nil
-  end
-
-  def top_app_bar_type
-    TopAppBar::Type::CenterAligned
   end
 
   def drawer_headline
