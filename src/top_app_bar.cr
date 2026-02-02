@@ -8,8 +8,11 @@ class Crumble::Material::TopAppBar(L, H, T)
   getter headline : H?
   getter trailing_icons : Array(T) | Array(Nil)
   getter type : Type
+  getter wrapper_attrs : WrapperAttrs
 
-  def initialize(@leading_icon, @headline, @trailing_icons, @type = :small); end
+  def initialize(@leading_icon, @headline, @trailing_icons, @type = :small, wrapper_attrs = WrapperAttrs.none)
+    @wrapper_attrs = WrapperAttrs.from(wrapper_attrs)
+  end
 
   css_id TopAppBarId
   css_class LeadingIcon
@@ -19,7 +22,7 @@ class Crumble::Material::TopAppBar(L, H, T)
   css_class SmallType
 
   ToHtml.instance_template do
-    nav TopAppBarId, type_class do
+    nav TopAppBarId, type_class, wrapper_attrs do
       div LeadingIcon do
         leading_icon
       end

@@ -2,8 +2,11 @@ require "./card"
 
 class Crumble::Material::Card::Title(T)
   getter text : T
+  getter wrapper_attrs : WrapperAttrs
 
-  def initialize(@text); end
+  def initialize(@text, wrapper_attrs = WrapperAttrs.none)
+    @wrapper_attrs = WrapperAttrs.from(wrapper_attrs)
+  end
 
   css_class CardTitle
 
@@ -16,7 +19,7 @@ class Crumble::Material::Card::Title(T)
   end
 
   ToHtml.instance_template do
-    h3 CardTitle do
+    h3 CardTitle, wrapper_attrs do
       text
     end
   end

@@ -1,7 +1,10 @@
 class Crumble::Material::Card
   getter link_target : String?
+  getter wrapper_attrs : WrapperAttrs
 
-  def initialize(@link_target = nil); end
+  def initialize(@link_target = nil, wrapper_attrs = WrapperAttrs.none)
+    @wrapper_attrs = WrapperAttrs.from(wrapper_attrs)
+  end
 
   css_class Card
   css_class Link
@@ -30,7 +33,7 @@ class Crumble::Material::Card
   end
 
   ToHtml.instance_template do
-    div Card do
+    div Card, wrapper_attrs do
       a Link, href: link_target if link_target
       yield
     end

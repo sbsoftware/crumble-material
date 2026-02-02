@@ -6,15 +6,18 @@ module Crumble
 
       getter name : String
       getter caption_text : String?
+      getter wrapper_attrs : WrapperAttrs
 
-      def initialize(@name, @caption_text = nil); end
+      def initialize(@name, @caption_text = nil, wrapper_attrs = WrapperAttrs.none)
+        @wrapper_attrs = WrapperAttrs.from(wrapper_attrs)
+      end
 
       css_class Wrapper
       css_class IconClass
       css_class Caption
 
       ToHtml.instance_template do
-        div Wrapper do
+        div Wrapper, wrapper_attrs do
           span IconClass do
             name
           end

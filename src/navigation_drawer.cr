@@ -1,14 +1,17 @@
 class Crumble::Material::NavigationDrawer(H, I)
   getter headline : H?
   getter items : Array(I) | Array(Nil)
+  getter wrapper_attrs : WrapperAttrs
 
-  def initialize(@headline, @items); end
+  def initialize(@headline, @items, wrapper_attrs = WrapperAttrs.none)
+    @wrapper_attrs = WrapperAttrs.from(wrapper_attrs)
+  end
 
   css_id Id
   css_class Items
 
   ToHtml.instance_template do
-    nav Id, MenuController.menu_target do
+    nav Id, MenuController.menu_target, wrapper_attrs do
       h1 do
         headline
       end
@@ -53,9 +56,29 @@ class Crumble::Material::NavigationDrawer(H, I)
   end
 
   class MenuSwitch
-    ToHtml.class_template do
-      span MenuController.switch_action("click") do
+    getter wrapper_attrs : WrapperAttrs
+
+    def initialize(wrapper_attrs = WrapperAttrs.none)
+      @wrapper_attrs = WrapperAttrs.from(wrapper_attrs)
+    end
+
+    ToHtml.instance_template do
+      span MenuController.switch_action("click"), wrapper_attrs do
         Crumble::Material::Icon.new("Menu")
+      end
+    end
+
+    def self.to_html(io, indent_level = 0)
+      new.to_html(io, indent_level)
+    end
+
+    def self.to_html
+      new.to_html
+    end
+
+    def self.to_html
+      new.to_html do |inner_io, indent_level|
+        yield inner_io, indent_level
       end
     end
   end

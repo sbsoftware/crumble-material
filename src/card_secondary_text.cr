@@ -2,6 +2,11 @@ require "./card"
 
 class Crumble::Material::Card::SecondaryText
   css_class Text
+  getter wrapper_attrs : WrapperAttrs
+
+  def initialize(wrapper_attrs = WrapperAttrs.none)
+    @wrapper_attrs = WrapperAttrs.from(wrapper_attrs)
+  end
 
   style do
     rule Text do
@@ -12,7 +17,7 @@ class Crumble::Material::Card::SecondaryText
   end
 
   ToHtml.instance_template do
-    div Text do
+    div Text, wrapper_attrs do
       yield
     end
   end
