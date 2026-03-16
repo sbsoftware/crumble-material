@@ -1,20 +1,16 @@
 module Crumble::Material
-  LAYER_NAME = "crumble-material"
+  LAYER_NAME = :crumble_material
 end
 
-# Wrap every shard stylesheet in the same cascade layer while preserving
-# the existing per-component asset structure and automatic layout includes.
+# Reuse the css.cr layer abstraction so every shard stylesheet shares the
+# same layer name while preserving the existing asset and layout wiring.
 macro material_style(name = Style, &blk)
-  class {{name.id}} < CSS::Stylesheet
-    class LayerBody < CSS::Stylesheet
-      {{blk.body}}
+  class {{name.id}} < CSS::LayerStylesheet
+    def self.layer_name : String?
+      CSS::LayerStylesheet.format_layer_name(Crumble::Material::LAYER_NAME)
     end
 
-    def self.to_s(io : IO)
-      io << "@layer " << Crumble::Material::LAYER_NAME << " {\n"
-      LayerBody.to_s(io)
-      io << "\n}"
-    end
+    {{blk.body}}
   end
 
   class ::ToHtml::Layout
