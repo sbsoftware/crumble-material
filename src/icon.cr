@@ -29,35 +29,37 @@ module Crumble
         end
       end
 
-      material_style do
-        font_face MaterialSymbolsOutlinedFont, name: "Material Symbols Outlined" do
-          src url(Font.uri_path)
-        end
+      style do
+        layer LAYER_NAME do
+          font_face MaterialSymbolsOutlinedFont, name: "Material Symbols Outlined" do
+            src url(Font.uri_path)
+          end
 
-        rule Wrapper do
-          display :inline_flex
-          align_items :center
-          vertical_align :text_bottom
-        end
+          rule Wrapper do
+            display :inline_flex
+            align_items :center
+            vertical_align :text_bottom
+          end
 
-        rule IconClass do
-          font_family MaterialSymbolsOutlinedFont
-          font_weight :normal
-          font_style :normal
-          font_size 24.px
-          display :inline_block
-          line_height 1
-          text_decoration :none
-          vertical_align :text_bottom
-          # textTransform None
-          # letterSpacing Normal
-          # wordWrap Normal
-          # whiteSpace NoWrap
-          # direction LTR
-        end
+          rule IconClass do
+            font_family MaterialSymbolsOutlinedFont
+            font_weight :normal
+            font_style :normal
+            font_size 24.px
+            display :inline_block
+            line_height 1
+            text_decoration :none
+            vertical_align :text_bottom
+            # textTransform None
+            # letterSpacing Normal
+            # wordWrap Normal
+            # whiteSpace NoWrap
+            # direction LTR
+          end
 
-        rule Caption do
-          margin_left 2.px
+          rule Caption do
+            margin_left 2.px
+          end
         end
       end
     end
