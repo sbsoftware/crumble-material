@@ -9,7 +9,7 @@ class Crumble::Material::Card
   css_class Card
   css_class Link
 
-  style do
+  material_style do
     rule Card do
       position :relative
       padding 16.px

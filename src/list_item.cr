@@ -22,13 +22,13 @@ module Crumble
         new.to_html
       end
 
-      def self.to_html
+      def self.to_html(&)
         new.to_html do |inner_io, indent_level|
           yield inner_io, indent_level
         end
       end
 
-      style do
+      material_style do
         rule Item do
           width 100.percent
           font_size 1.25.em

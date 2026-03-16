@@ -20,7 +20,15 @@ TODO: Write a description here
 require "crumble-material"
 ```
 
-TODO: Write usage instructions here
+Include the shard stylesheets in your layout as usual. All CSS emitted by this shard is wrapped in `@layer crumble-material`.
+
+If your app defines cascade layer order up front, declare the shard layer before your app overrides so local styles can win without selector hacks:
+
+```css
+@layer reset, crumble-material, app;
+```
+
+Place your own component overrides in `@layer app` or any layer ordered after `crumble-material`.
 
 ## Development
 

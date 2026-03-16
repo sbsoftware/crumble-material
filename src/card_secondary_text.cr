@@ -8,7 +8,7 @@ class Crumble::Material::Card::SecondaryText
     @wrapper_attrs = WrapperAttrs.from(wrapper_attrs)
   end
 
-  style do
+  material_style do
     rule Text do
       color rgb(0x88, 0x88, 0x88)
       line_height 28.px

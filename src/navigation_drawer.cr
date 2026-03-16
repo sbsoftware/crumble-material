@@ -25,7 +25,7 @@ class Crumble::Material::NavigationDrawer(H, I)
     end
   end
 
-  style do
+  material_style do
     rule Id do
       display :none
       width 360.px
@@ -76,7 +76,7 @@ class Crumble::Material::NavigationDrawer(H, I)
       new.to_html
     end
 
-    def self.to_html
+    def self.to_html(&)
       new.to_html do |inner_io, indent_level|
         yield inner_io, indent_level
       end

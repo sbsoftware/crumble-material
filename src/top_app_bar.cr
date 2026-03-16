@@ -39,7 +39,7 @@ class Crumble::Material::TopAppBar(L, H, T)
     end
   end
 
-  style do
+  material_style do
     rule TopAppBarId do
       width 100.percent
       height 64.px

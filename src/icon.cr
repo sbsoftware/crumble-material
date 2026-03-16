@@ -29,7 +29,7 @@ module Crumble
         end
       end
 
-      style do
+      material_style do
         font_face MaterialSymbolsOutlinedFont, name: "Material Symbols Outlined" do
           src url(Font.uri_path)
         end
