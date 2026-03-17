@@ -24,11 +24,19 @@ Include the shard stylesheets in your layout as usual. All CSS emitted by this s
 
 If your app defines cascade layer order up front, declare the shard layer before your app overrides so local styles can win without selector hacks:
 
-```css
-@layer reset, crumble-material, app;
+```crystal
+class AppStyle < CSS::Stylesheet
+  layer_order :reset, :crumble_material, :app
+
+  layer :app do
+    rule ".my-component" do
+      color :rebeccapurple
+    end
+  end
+end
 ```
 
-Place your own component overrides in `@layer app` or any layer ordered after `crumble-material`.
+Place your own overrides in a layer ordered after `:crumble_material`, such as `:app` above.
 
 ## Development
 
