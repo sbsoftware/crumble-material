@@ -11,10 +11,12 @@ class Crumble::Material::Card::Title(T)
   css_class CardTitle
 
   style do
-    rule CardTitle do
-      margin 0
-      font_size 24.px
-      line_height 24.px
+    layer LAYER_NAME do
+      rule CardTitle do
+        margin 0
+        font_size 24.px
+        line_height 24.px
+      end
     end
   end
 

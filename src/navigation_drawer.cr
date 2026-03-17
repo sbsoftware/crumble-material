@@ -26,32 +26,34 @@ class Crumble::Material::NavigationDrawer(H, I)
   end
 
   style do
-    rule Id do
-      display :none
-      width 360.px
-      padding_top 16.px
-    end
+    layer LAYER_NAME do
+      rule Id do
+        display :none
+        width 360.px
+        padding_top 16.px
+      end
 
-    rule Id && Classes::MenuActive do
-      display :block
-    end
+      rule Id && Classes::MenuActive do
+        display :block
+      end
 
-    rule Id > a do
-      text_decoration :none
-      color :black
-    end
+      rule Id > a do
+        text_decoration :none
+        color :black
+      end
 
-    rule Items do
-      list_style :none
-      margin 0
-      padding 0
-    end
+      rule Items do
+        list_style :none
+        margin 0
+        padding 0
+      end
 
-    rule(Id > h1, Items > any) do
-      height 56.px
-      margin 0, 28.px
-      font_size 14.pt
-      font_weight 500
+      rule(Id > h1, Items > any) do
+        height 56.px
+        margin 0, 28.px
+        font_size 14.pt
+        font_weight 500
+      end
     end
   end
 
@@ -76,7 +78,7 @@ class Crumble::Material::NavigationDrawer(H, I)
       new.to_html
     end
 
-    def self.to_html
+    def self.to_html(&)
       new.to_html do |inner_io, indent_level|
         yield inner_io, indent_level
       end

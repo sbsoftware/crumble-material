@@ -9,10 +9,12 @@ class Crumble::Material::Card::SecondaryText
   end
 
   style do
-    rule Text do
-      color rgb(0x88, 0x88, 0x88)
-      line_height 28.px
-      margin_top 8.px
+    layer LAYER_NAME do
+      rule Text do
+        color rgb(0x88, 0x88, 0x88)
+        line_height 28.px
+        margin_top 8.px
+      end
     end
   end
 
