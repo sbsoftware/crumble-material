@@ -54,6 +54,7 @@ module Crumble::Material::Layout::DrawerItemsSpec
       layout = MyLayout.new(ctx, model)
 
       stimulus_uri = Crumble::StimulusControllers.uri_path
+      pwa_install_style = Crumble::PwaInstallComponent::Style.uri_path
       icon_style = Crumble::Material::Icon::Style.uri_path
       list_item_style = Crumble::Material::ListItem::Style.uri_path
       base_style = Crumble::Material::Style.uri_path
@@ -70,6 +71,7 @@ module Crumble::Material::Layout::DrawerItemsSpec
           <title></title>
           <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
           <script>var pageload_time;var evt_source;pageload_time = Date.now();evt_source = new EventSource("/live_reload");evt_source.addEventListener("message", function(msg) {var compile_time;compile_time = Date.parse(msg.data);if (pageload_time < compile_time) {window.location.reload();}});</script>
+          <link rel="stylesheet" href="#{pwa_install_style}">
           <script type="module" src="#{stimulus_uri}"></script>
           <link rel="stylesheet" href="#{icon_style}">
           <link rel="stylesheet" href="#{list_item_style}">
