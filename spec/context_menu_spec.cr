@@ -38,6 +38,7 @@ module Crumble::Material::ContextMenuSpec
       css.should contain("position-area: block-end span-inline-start;")
       css.should contain("position-try-fallbacks: flip-block, flip-inline;")
       css.should contain("position: absolute;")
+      css.should contain(".crumble--material--context-menu--body.crumble--material--context-menu--menu-active")
     end
   end
 
@@ -45,7 +46,7 @@ module Crumble::Material::ContextMenuSpec
     it "keeps ARIA, focus, outside click, and Escape behavior in sync" do
       javascript = ContextMenu::MenuController.to_js
 
-      javascript.should contain(%(classList.toggle("crumble--material--classes--menu-active")))
+      javascript.should contain(%(classList.toggle("crumble--material--context-menu--menu-active")))
       javascript.should contain(%(setAttribute("aria-expanded", open)))
       javascript.should contain("this.menuTarget.focus();")
       javascript.should contain("if (this.element.contains(event.target) == false)")

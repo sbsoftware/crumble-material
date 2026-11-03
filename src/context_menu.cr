@@ -1,32 +1,37 @@
 class Crumble::Material::ContextMenu
+  css_class Wrapper
+  css_class Trigger
+  css_class Body
+  css_class MenuActive
+
   stimulus_controller MenuController do
     targets :trigger, :menu
 
     action "toggle" do |event|
       event.preventDefault._call
-      this.menuTarget.classList.toggle(Classes::MenuActive.to_s.to_js_ref)
-      open = this.menuTarget.classList.contains(Classes::MenuActive.to_s.to_js_ref)
+      this.menuTarget.classList.toggle(MenuActive.to_s.to_js_ref)
+      open = this.menuTarget.classList.contains(MenuActive.to_s.to_js_ref)
       this.triggerTarget.setAttribute("aria-expanded", open)
       this.menuTarget.focus._call if open
     end
 
     action "close_on_outside_click" do |event|
       if this.element.contains(event.target) == false
-        this.menuTarget.classList.remove(Classes::MenuActive.to_s.to_js_ref)
+        this.menuTarget.classList.remove(MenuActive.to_s.to_js_ref)
         this.triggerTarget.setAttribute("aria-expanded", false)
       end
     end
 
     action "close_on_escape" do |event|
-      if event.key == "Escape" && this.menuTarget.classList.contains(Classes::MenuActive.to_s.to_js_ref)
-        this.menuTarget.classList.remove(Classes::MenuActive.to_s.to_js_ref)
+      if event.key == "Escape" && this.menuTarget.classList.contains(MenuActive.to_s.to_js_ref)
+        this.menuTarget.classList.remove(MenuActive.to_s.to_js_ref)
         this.triggerTarget.setAttribute("aria-expanded", false)
         this.triggerTarget.focus._call
       end
     end
 
     action "close_on_selection" do
-      this.menuTarget.classList.remove(Classes::MenuActive.to_s.to_js_ref)
+      this.menuTarget.classList.remove(MenuActive.to_s.to_js_ref)
       this.triggerTarget.setAttribute("aria-expanded", false)
     end
   end
@@ -38,10 +43,6 @@ class Crumble::Material::ContextMenu
   def initialize(@icon_name = "MoreVert", @label = "More options", wrapper_attrs = WrapperAttrs.none)
     @wrapper_attrs = WrapperAttrs.from(wrapper_attrs)
   end
-
-  css_class Wrapper
-  css_class Trigger
-  css_class Body
 
   ToHtml.instance_template do
     div Wrapper, MenuController, MenuController.close_on_outside_click_action("click@window"), MenuController.close_on_escape_action("keydown@window"), wrapper_attrs do
@@ -80,7 +81,7 @@ class Crumble::Material::ContextMenu
         position_try_fallbacks :flip_block, :flip_inline
       end
 
-      rule Body && Classes::MenuActive do
+      rule Body && MenuActive do
         display :block
       end
     end
