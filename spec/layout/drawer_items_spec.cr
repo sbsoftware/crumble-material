@@ -57,6 +57,7 @@ module Crumble::Material::Layout::DrawerItemsSpec
       pwa_install_style = Crumble::PwaInstallComponent::Style.uri_path
       icon_style = Crumble::Material::Icon::Style.uri_path
       list_item_style = Crumble::Material::ListItem::Style.uri_path
+      context_menu_style = Crumble::Material::ContextMenu::Style.uri_path
       base_style = Crumble::Material::Style.uri_path
       navigation_drawer_style = Crumble::Material::NavigationDrawer::Style.uri_path
       top_app_bar_style = Crumble::Material::TopAppBar::Style.uri_path
@@ -75,6 +76,7 @@ module Crumble::Material::Layout::DrawerItemsSpec
           <script type="module" src="#{stimulus_uri}"></script>
           <link rel="stylesheet" href="#{icon_style}">
           <link rel="stylesheet" href="#{list_item_style}">
+          <link rel="stylesheet" href="#{context_menu_style}">
           <link rel="stylesheet" href="#{base_style}">
           <link rel="stylesheet" href="#{navigation_drawer_style}">
           <link rel="stylesheet" href="#{top_app_bar_style}">
