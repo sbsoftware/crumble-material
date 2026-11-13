@@ -30,14 +30,24 @@ module Crumble::Material::ContextMenuSpec
       html.should contain(%(<a href="/contacts/1/edit" data-action="contact#edit" role="menuitem">Edit</a>))
     end
 
-    it "uses CSS anchor positioning with browser-selected fallbacks" do
+    it "uses explicit logical fallback positioning and viewport-aware anchor positioning" do
       css = ContextMenu::Style.to_s
 
+      css.should contain("anchor-scope: --context-menu;")
       css.should contain("anchor-name: --context-menu;")
+      css.should contain("position: absolute;")
+      css.should contain("inset-block-start: 100%;")
+      css.should contain("inset-inline-end: 0;")
+      css.should contain("min-inline-size: min(160px, calc(100vw - 16px));")
+      css.should contain("max-inline-size: calc(100vw - 16px);")
+      css.should contain("max-block-size: calc(100vh - 16px);")
+      css.should contain("overflow: auto;")
+      css.should contain("@supports ((anchor-name: --context-menu) and (anchor-scope: --context-menu))")
+      css.should contain("position: fixed;")
       css.should contain("position-anchor: --context-menu;")
       css.should contain("position-area: block-end span-inline-start;")
-      css.should contain("position-try-fallbacks: flip-block, flip-inline;")
-      css.should contain("position: absolute;")
+      css.should contain("position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;")
+      css.should contain("position-try-order: most-block-size;")
       css.should contain(".crumble--material--context-menu--body.crumble--material--context-menu--menu-active")
     end
   end
