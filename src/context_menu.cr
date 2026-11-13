@@ -76,9 +76,9 @@ class Crumble::Material::ContextMenu
         inset_block_start 100.percent
         inset_inline_end 0
         z_index 1
-        property "min-inline-size", "min(160px, calc(100vw - 16px))"
-        property "max-inline-size", "calc(100vw - 16px)"
-        property "max-block-size", "calc(100vh - 16px)"
+        min_inline_size min(160.px, calc(100.vw - 16.px))
+        max_inline_size calc(100.vw - 16.px)
+        max_block_size calc(100.vh - 16.px)
         overflow :auto
         padding 8.px, 0
         background_color :white
