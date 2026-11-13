@@ -60,6 +60,8 @@ class Crumble::Material::ContextMenu
       rule Wrapper do
         position :relative
         display :inline_block
+        # Scope the reusable anchor name so each menu resolves its own trigger.
+        property "anchor-scope", "--context-menu"
       end
 
       rule Trigger do
@@ -69,16 +71,31 @@ class Crumble::Material::ContextMenu
 
       rule Body do
         display :none
-        # The static absolute position remains usable without anchors, so mobile browsers need no JavaScript geometry fallback.
+        # Explicit logical insets provide a predictable LTR/RTL fallback when anchor positioning is unavailable.
         position :absolute
+        inset_block_start 100.percent
+        inset_inline_end 0
         z_index 1
-        min_width 160.px
+        property "min-inline-size", "min(160px, calc(100vw - 16px))"
+        property "max-inline-size", "calc(100vw - 16px)"
+        property "max-block-size", "calc(100vh - 16px)"
+        overflow :auto
         padding 8.px, 0
         background_color :white
         box_shadow 1.px, 1.px, 3.px, "#000"
-        position_anchor :context_menu
-        position_area :block_end, :span_inline_start
-        position_try_fallbacks :flip_block, :flip_inline
+      end
+
+      supports raw("((anchor-name: --context-menu) and (anchor-scope: --context-menu))") do
+        rule Body do
+          # A fixed positioned box uses the viewport for fit checks instead of the trigger-sized wrapper.
+          position :fixed
+          inset_block_start :auto
+          inset_inline_end :auto
+          position_anchor :context_menu
+          position_area :block_end, :span_inline_start
+          property "position-try-fallbacks", "flip-block, flip-inline, flip-block flip-inline"
+          position_try_order :most_block_size
+        end
       end
 
       rule Body && MenuActive do
